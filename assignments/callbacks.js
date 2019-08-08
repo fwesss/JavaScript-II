@@ -30,7 +30,7 @@ function getLength(arr, cb) {
     return cb(arr.length);
 }
 
-getLength(items, function (length) {
+getLength(items, length => {
     console.log(length);
 });
 
@@ -39,7 +39,7 @@ function last(arr, cb) {
     return cb(arr[arr.length - 1]);
 }
 
-last(items, function (last) {
+last(items, last => {
     console.log(last);
 });
 
@@ -48,7 +48,7 @@ function sumNums(x, y, cb) {
     return cb(x + y);
 }
 
-sumNums(3, 5, function (sum) {
+sumNums(3, 5, sum => {
     console.log(sum);
 });
 
@@ -57,7 +57,7 @@ function multiplyNums(x, y, cb) {
     return cb(x * y);
 }
 
-multiplyNums(5, 7, function (multiply) {
+multiplyNums(5, 7, multiply => {
     console.log(multiply);
 });
 
@@ -67,7 +67,7 @@ function contains(item, list, cb) {
     return cb(list.includes(item));
 }
 
-contains("Notebook", items, function (contains) {
+contains("Notebook", items, contains => {
     console.log(contains);
 });
 
@@ -77,4 +77,10 @@ function removeDuplicates(array, cb) {
     // removeDuplicates removes all duplicate values from the given array.
     // Pass the duplicate free array to the callback function.
     // Do not mutate the original array.
+
+    return cb(Array.from(new Set(array)));
 }
+
+removeDuplicates(items, clean => {
+    console.log(clean);
+});
