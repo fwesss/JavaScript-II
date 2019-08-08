@@ -2,15 +2,16 @@
 
 // Scroll to the bottom of the list to use some advanced array methods to help the event director gather some information from the businesses.
 
-const runners = [{
-    "id": 1,
-    "first_name": "Charmain",
-    "last_name": "Seiler",
-    "email": "cseiler0@wired.com",
-    "shirt_size": "2XL",
-    "company_name": "Divanoodle",
-    "donation": 75
-},
+const runners = [
+    {
+        "id": 1,
+        "first_name": "Charmain",
+        "last_name": "Seiler",
+        "email": "cseiler0@wired.com",
+        "shirt_size": "2XL",
+        "company_name": "Divanoodle",
+        "donation": 75
+    },
     {
         "id": 2,
         "first_name": "Whitaker",
@@ -481,7 +482,20 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// List of emails we will send endless spam to
+
+const bottomFiveDonors = runners.sort((a, b) => a.donation - b.donation).slice(0, 5).map(runner => runner.email);
+console.log(bottomFiveDonors);
 
 // Problem 2
+// Names of runners whose names will not fit on their bibs. They will need to legally shorten their names in order to compete.
+
+const fullNames = runners.map(runner => `${runner.first_name} ${runner.last_name}`);
+const longNames = fullNames.filter(name => name.length > 18);
+console.log(longNames);
 
 // Problem 3
+
+// Fix race so highest donation wins
+const winner = runners.sort((a, b) => b.donation - a.donation).slice(0, 1).map(runner => `${runner.first_name} ${runner.last_name}`);
+console.log(`Congratulations ${winner}!`);
