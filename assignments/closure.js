@@ -9,12 +9,15 @@ console.log(displayName());
 
 
 // ==== Challenge 2: Create a counter function ====
-let count = 0;
-(function () {
-    // Return a function that when invoked increments and returns a counter variable.
-    return count++;
-}());
-console.log(count);
+const count = () => {
+    let count = 0;
+    return () => ++count;
+};
+
+const newCounter = count();
+console.log(newCounter());
+console.log(newCounter());
+console.log(newCounter());
 
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
@@ -27,14 +30,14 @@ const counterFactory = () => {
     // `decrement` should decrement the counter variable and return it.
     let count = 0;
     return {
-        increment: function () {
-            count++;
-            return count;
+        increment: () => {
+            return ++count;
         },
-        decrement: function () {
-            count--;
-            return count;
+        decrement: () => {
+            return --count;
         }
     }
 };
 
+console.log(counterFactory().decrement());
+console.log(counterFactory().increment());
