@@ -12,12 +12,12 @@ files
 
 
 // ==== Challenge 2: Create a counter function ====
-const count = () => {
+const counter = () => {
   let count = 0;
   return () => ++count;
 };
 
-const newCounter = count();
+const newCounter = counter();
 console.log(newCounter());
 console.log(newCounter());
 console.log(newCounter());
@@ -38,5 +38,8 @@ const counterFactory = () => {
   };
 };
 
-console.log(counterFactory().decrement());
-console.log(counterFactory().increment());
+const newCounterFactory = counterFactory();
+console.log(newCounterFactory.decrement());
+console.log(newCounterFactory.increment());
+console.log(newCounterFactory.increment());
+console.log(newCounterFactory.increment());
